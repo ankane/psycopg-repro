@@ -22,8 +22,8 @@ jobs:
       - run: createdb repro
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.12
-      - run: pip install "psycopg[binary]"
+          python-version: 3.8
+      - run: pip install "psycopg[c]==3.0.10"
       - run: python3 repro.py
   # pg-mac:
   #   runs-on: macos-13
