@@ -17,4 +17,8 @@ with cur.copy('COPY items (description) FROM STDIN WITH (FORMAT BINARY)') as cop
 
         copy.write_row([description])
 
+        # flush data
+        while conn.pgconn.flush() == 1:
+            pass
+
 print()
