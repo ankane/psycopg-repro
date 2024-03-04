@@ -1,32 +1,32 @@
 name: build
 on: push
 jobs:
-  psycopg-ubuntu:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - run: sudo service postgresql start
-      - run: sudo -u postgres createuser runner -s
-      - run: createdb repro
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
-      - run: pip install "psycopg[binary]"
-      - run: python3 repro.py
-  psycopg-mac:
-    runs-on: macos-14
-    steps:
-      - uses: actions/checkout@v4
-      - run: brew install postgresql
-      - run: brew services start postgresql
-      - run: createdb repro
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
-      - run: pip install "psycopg[binary]"
-      - run: python3 repro.py
+  # psycopg-ubuntu:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - run: sudo service postgresql start
+  #     - run: sudo -u postgres createuser runner -s
+  #     - run: createdb repro
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: 3.12
+  #     - run: pip install "psycopg[binary]"
+  #     - run: python3 repro.py
+  # psycopg-mac:
+  #   runs-on: macos-14
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - run: brew install postgresql
+  #     - run: brew services start postgresql
+  #     - run: createdb repro
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: 3.12
+  #     - run: pip install "psycopg[binary]"
+  #     - run: python3 repro.py
   pg-mac:
-    runs-on: macos-14
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
       - run: brew install postgresql
